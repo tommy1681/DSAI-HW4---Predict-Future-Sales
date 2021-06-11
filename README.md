@@ -20,3 +20,8 @@
 	  * another.py 由於再添加特徵的時候，是使用train_pre_another_17_33.csv，此檔會有700多萬筆資料，所有特徵添加完成時間會花費2小時，請助教留意，git已附上預處理結束後之檔案train_pre_another.csv、test_pre_another.csv
 * report link:
 	* https://docs.google.com/presentation/d/1FvJoXt_a4zGjopO-QqKH4dQCxEPMh99vhgFjN1sMKsM/edit?usp=sharing
+	
+* 預處理資料下載連結:
+	* train_pre_another.csv : https://drive.google.com/file/d/1RwwJ6UEmOgHvyW4YUPqUFeF4gBQ8hdCX/view?usp=sharing
+	* test_pre_another.csv : https://drive.google.com/file/d/1tsmoJ9vc7hyfC3rLybqf_PYxF02sDPvx/view?usp=sharing
+	* train_pre_another_17_33.csv : https://drive.google.com/file/d/1944zOduu1NOuBTP42R38rgNBM97fQzv0/view?usp=sharing
