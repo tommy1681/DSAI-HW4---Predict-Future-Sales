@@ -1,6 +1,6 @@
 # DSAI-HW4---Predict-Future-Sales
 
-* 預處理過後之資料由於檔案過大，所以上傳至google雲端，連結附在最後，請助教直接下載train_pre_another.csv、test_pre_another.csv，就可以執行模型訓練與產生預測資料
+* 預處理過後之資料由於檔案過大，所以上傳至google雲端，連結附在最後，請助教直接下載train_pre_another.csv、test_pre_another.csv，就可以執行模型訓練與產生預測資料，請放在與lightgbm_train.py同階層資料夾
 * 執行方法
   * python lightgbm_train.py --train train_pre_another.csv --test test_pre_another.csv --output output.csv
   * train_pre_another.csv為預處理過的訓練資料
