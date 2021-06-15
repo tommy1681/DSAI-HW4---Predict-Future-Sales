@@ -387,25 +387,6 @@ print("新增最後賣出該物品的時間")
 
 
 
-data = sales_train.groupby(['shop_id', 'item_id','date_block_num'])['item_cnt_day'].sum()
-data = data.reset_index()
-first_month = data.groupby(['shop_id', 'item_id'])['date_block_num'].min()
-
-
-def make_first_month(x):
-   
-    if (x['shop_id'], x['item_id']) in first_month.index:
-        ans = int(first_month[(x['shop_id'], x['item_id'])])
-        #print(ans,x['date_block_num'])
-        return ans
-    else:
-        return 0
-
-train['first_month'] = train.apply(make_first_month, axis='columns')
-test['first_month'] = test.apply(make_first_month, axis='columns')
-print(train.shape)
-print("新增最早賣出該物品的時間")
-
 
 train.to_csv("train_pre_another.csv",index=False)
 test.to_csv("test_pre_another.csv",index=False)
