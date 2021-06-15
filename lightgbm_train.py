@@ -15,7 +15,6 @@ class train_modle:
                         'prev_2_month_item_total_sales',
                         'prev_1_month_sales',
                         'date_block_num',
-                        'first_month',
                         'last_month',
                         'shop_id',
                         'item_id',

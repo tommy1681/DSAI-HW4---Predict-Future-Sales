@@ -32,6 +32,7 @@ def prepare_train_data():
     return train
 #==============================================================================================================================
 start = time.time()
+print("開始",start)
 sales_train = pd.read_csv('sales_train.csv')
 train = pd.read_csv('train_pre_another_17_33.csv')
 train['item_cnt_day'] = 0
