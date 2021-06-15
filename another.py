@@ -347,6 +347,63 @@ print("新增前1個月商品總銷售")
 
 
 
+sales_train = pd.read_csv('sales_train.csv')
+last_month = sales_train.groupby(['shop_id', 'item_id','date_block_num'])['item_cnt_day'].sum()
+last_month = last_month.reset_index()
+
+def make_last_month(x):
+
+    if (x['shop_id'], x['item_id']) in temp.index:
+        ans = int(temp[(x['shop_id'], x['item_id'])])
+        
+        return ans
+    else:
+        return 0
+
+
+for i in range(17,33):
+    temp_t = train.drop(train[train['date_block_num']!=i].index)
+    m_temp = i
+    temp = last_month.drop(last_month[last_month['date_block_num']>=m_temp].index)
+    temp = temp.groupby(['shop_id', 'item_id'])['date_block_num'].max()
+    temp_t['last_month'] = temp_t.apply(make_last_month, axis='columns')
+    if i ==17:
+        final_df = temp_t
+    else:
+        final_df = pd.concat([final_df, temp_t]) 
+    print(i)
+
+
+train = final_df
+
+
+temp = last_month.drop(last_month[last_month['date_block_num']>=34].index)
+temp = temp.groupby(['shop_id', 'item_id'])['date_block_num'].max()
+test['last_month'] = test.apply(make_last_month, axis='columns')
+
+print(train.shape)
+print("新增最後賣出該物品的時間")
+
+
+
+data = sales_train.groupby(['shop_id', 'item_id','date_block_num'])['item_cnt_day'].sum()
+data = data.reset_index()
+first_month = data.groupby(['shop_id', 'item_id'])['date_block_num'].min()
+
+
+def make_first_month(x):
+   
+    if (x['shop_id'], x['item_id']) in first_month.index:
+        ans = int(first_month[(x['shop_id'], x['item_id'])])
+        #print(ans,x['date_block_num'])
+        return ans
+    else:
+        return 0
+
+train['first_month'] = train.apply(make_first_month, axis='columns')
+test['first_month'] = test.apply(make_first_month, axis='columns')
+print(train.shape)
+print("新增最早賣出該物品的時間")
 
 
 train.to_csv("train_pre_another.csv",index=False)
